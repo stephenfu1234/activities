@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: stephen.fu
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: activities
+      changes:
+        - createTable:
+            tableName: activities
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: activity_name
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: stephen.fu
+      changes:
+        - insert:
+            tableName: activities
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: activity_name
+                  value: "My activity 1"
+  - changeSet:
+      id: 3
+      author: stephen.fu
+      changes:
+        - insert:
+            tableName: activities
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: activity_name
+                  value: "My activity 2"
