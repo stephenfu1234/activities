@@ -1,0 +1,128 @@
+databaseChangeLog:
+- changeSet:
+    id: 1721656607454-2
+    author: stephenfu (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: id
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: rev
+            type: INT
+        - column:
+            name: revtype
+            type: TINYINT
+        - column:
+            name: activity_name
+            type: VARCHAR(255)
+        - column:
+            name: created_at
+            type: timestamp
+            defaultValueComputed: current_timestamp
+        - column:
+            name: created_by
+            type: VARCHAR(255)
+        - column:
+            name: updated_at
+            type: timestamp
+        - column:
+            name: updated_by
+            type: VARCHAR(255)
+        - column:
+            name: user_id
+            type: INT
+        tableName: activities_aud
+- changeSet:
+    id: 1721656607454-3
+    author: stephenfu (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: revinfoPK
+            name: rev
+            type: INT
+        - column:
+            name: revtstmp
+            type: BIGINT
+        tableName: revinfo
+- changeSet:
+    id: 1721656607454-4
+    author: stephenfu (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: created_at
+            type: datetime(6)
+        tableName: activities
+- changeSet:
+    id: 1721656607454-5
+    author: stephenfu (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: created_by
+            type: varchar(255)
+        tableName: activities
+- changeSet:
+    id: 1721656607454-6
+    author: stephenfu (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: updated_at
+            type: datetime(6)
+        tableName: activities
+- changeSet:
+    id: 1721656607454-7
+    author: stephenfu (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: updated_by
+            type: varchar(255)
+        tableName: activities
+- changeSet:
+    id: 1721656607454-8
+    author: stephenfu (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: rev, id
+        constraintName: activities_audPK
+        tableName: activities_aud
+- changeSet:
+    id: 1721656607454-9
+    author: stephenfu (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: rev
+        baseTableName: activities_aud
+        constraintName: FK1hpf6bko3m4d065p7mwowt8v1
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: rev
+        referencedTableName: revinfo
+        validate: true
+- changeSet:
+    id: 1721656607454-1
+    author: stephenfu (generated)
+    changes:
+    - modifyDataType:
+        columnName: activity_name
+        newDataType: varchar(255)
+        tableName: activities
+
